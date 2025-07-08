@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "devstart": "nodemon server.js",
+    "devstart-auth": "nodemon authServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

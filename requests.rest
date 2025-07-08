@@ -1,4 +1,10 @@
 GET http://localhost:3000/posts
+Authorization: Bearer your_access_token_here
+
+###
+
+GET http://localhost:4000/posts
+Authorization: Bearer your_access_token_here
 
 ###
 
@@ -6,5 +12,30 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "username": "Vineet",
+  "username": "Vineet"
+}
+
+### 
+
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+  "username": "Vineet"
+}
+
+###
+POST http://localhost:4000/token
+Content-Type: application/json
+
+{
+  "token": "your_refresh_token_here"
+}
+
+###
+DELETE http://localhost:4000/logout
+Content-Type: application/json
+
+{
+  "token": "your_refresh_token_here"
 }
