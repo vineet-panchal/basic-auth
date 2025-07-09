@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+app.use(cors());
 app.use(express.json());
 
 let refreshTokens = [];
@@ -41,4 +43,6 @@ function generateAccessToken(user) {
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s' });
 }
 
-app.listen(4000);
+app.listen(4000, () => {
+  console.log('Auth server running on port 4000');
+});

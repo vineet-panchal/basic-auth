@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+app.use(cors());
 app.use(express.json());
 
 const posts = [
@@ -24,10 +26,8 @@ const posts = [
 ]
 
 app.get('/posts', authenticateToken, (req, res) => {
-  
   res.json(posts.filter(post => post.username === req.user.name));
 });
-
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
@@ -42,4 +42,6 @@ function authenticateToken(req, res, next) {
   });
 }
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log('Main server running on port 3000');
+});
